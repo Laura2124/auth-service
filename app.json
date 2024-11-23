@@ -1,0 +1,16 @@
+const express = require('express');
+const dbconnect = require('./config/db');
+const authRoutes = require('./routes/auth');
+
+const app = express();
+dbconnect();
+
+// Middleware para analizar JSON
+app.use(express.json());
+
+// Rutas de autenticación
+app.use('/auth', authRoutes);
+
+app.listen(3000, () => {
+  console.log('Servidor en ejecución en el puerto 3000');
+});
